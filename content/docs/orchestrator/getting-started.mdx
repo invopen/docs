@@ -1,0 +1,104 @@
+---
+title: Getting Started
+---
+
+Welcome! This page will guide you through all that is necessary to set up Orchestrator.
+
+## Before we get started...
+
+You need a bit of technical knowledge to execute this tutorial. Check out the [Necessary Knowledge](/docs/orchestrator/necessary-knowledge) page to ensure you have the required knowledge.
+
+You need the following to run Orchestrator:
+
+- [Git](https://git-scm.com) (or the [Github CLI](https://cli.github.com))
+- [Docker](https://docker.com)
+- Docker Compose (typically comes with Docker installs)
+
+To ensure you have all requirements, run the following commands in a terminal window:
+<Tabs groupId="git" items={["Git", "Github CLI"]}>
+    <Tab value="Git">
+        ```sh
+        git version
+        docker --version
+        docker compose version
+        ```
+    </Tab>
+    <Tab value="Github CLI">
+        ```sh
+        gh version
+        docker --version
+        docker compose version
+        ```
+    </Tab>
+</Tabs>
+
+Depending on the version of the various softwares, the response will vary. As long as no responses say anything along the lines of 'not found', you should be fine.
+
+## Tutorial
+
+<Steps>
+    <Step>
+        ### Get the source code
+
+        Start by opening a new terminal window, going to a desired folder, and running the following:
+        <Tabs groupId="git" items={["Git", "Github CLI"]}>
+            <Tab value="Git">
+                ```sh
+                git clone https://github.com/invopen/orchestrator.git
+                ```
+            </Tab>
+            <Tab value="Github CLI">
+                ```sh
+                gh clone invopen/orchestrator
+                ```
+            </Tab>
+        </Tabs>
+        This will download the latest source code from Github. You'll then want to open that folder in your terminal with:
+        ```sh
+        cd orchestrator
+        ```
+    </Step>
+    <Step>
+        ### Modify configuration
+
+        Check out the [Config Builder](/docs/orchestrator/config-builder) for a more interactive way to create a config.
+
+        <Accordions type="single">
+            <Accordion title="Config Explained">
+                Orchestrator's core config is defined with environment variables, which are set in it's `deploy.yml` file. This file tells Docker what to do to start Orchestrator.
+
+                The table below lists all valid variables, what they accept, and what they do.
+
+                <TypeTable
+                    type={{
+                        "SUPERADMIN_USERNAME": {
+                            description: "The username of your superadmin, who can change anything and everything. Make this secure!",
+                            type: "string",
+                            required: true
+                        },
+                        "SUPERADMIN_PASSWORD": {
+                            description: "The password of your superadmin, who can change anything and everything. Make this secure!",
+                            type: "string",
+                            required: true
+                        },
+                        "PORT": {
+                            description: "The port on which Orchestrator runs it's web portal on.",
+                            type: "number",
+                            default: 7856
+                        }
+                    }}
+                />
+            </Accordion>
+        </Accordions>
+
+        When you have a config, simply bring it to the root of the code and name the file `deploy.yml`.
+    </Step>
+    <Step>
+        ### Start the container
+
+        Simply run:
+        ```sh
+        docker compose up
+        ```
+    </Step>
+</Steps>

@@ -1,0 +1,12 @@
+{
+  "title": "Orchestrator",
+  "root": true,
+  "pages": [
+    "---Introduction---",
+    "index",
+    "---Setup---",
+    "necessary-knowledge",
+    "getting-started",
+    "config-builder"
+  ]
+}
