@@ -1,0 +1,29 @@
+{
+    "packages": {
+        "stocker": {
+            "friendly_name": "Stocker",
+            "version": "0.0.1-alpha",
+            "description": "Handles stock count, item locations, and more related to stock.",
+            "requires": [],
+            "repo": "invopen/stocker"
+        },
+        "shopper": {
+            "friendly_name": "Shopper",
+            "version": "0.0.1-alpha",
+            "description": "Allows users to order items online for shipping.",
+            "requires": [
+                "stocker"
+            ],
+            "repo": "invopen/shopper"
+        },
+        "fulfiller": {
+            "friendly_name": "Fulfiller",
+            "version": "0.0.1-alpha",
+            "description": "Flows for online order fulfillment, also adds pickup options to Shopper.",
+            "requires": [
+                "shopper"
+            ],
+            "repo": "invopen/fulfiller"
+        }
+    }
+}
